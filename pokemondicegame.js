@@ -23,11 +23,12 @@ function runGame() {	// master function
 		type: "Psychic",
 		health: 50
 	};
+	let currentPokemonIndex = 0;
 
 	// actual gameplay starts
 	displayRules();
 
-	let pokemon1 = catchFirstPokemon(); 
+	let pokemon1 = catchFirstPokemon();
 	console.log(pokemon1);  
 	myPokemon.push(pokemon1);
 
@@ -47,16 +48,33 @@ function runGame() {	// master function
 	console.log(pokemon5);  
 	myPokemon.push(pokemon5);
 
+	// what number for 'currentPokemon' means we're done?
+	while(mewtwo.health > 0 && currentPokemonIndex < 5   /*player still has pkmn*/) {		// one loop represents one turn
+		/////////////////////////////////////////////////////
+		// while loop!
+		// when youre out of pokemon or when Mewtwo is out of health (game ends) two conditions  
+		// just doing one turn first
+		// player attacks once (update mewtwo's health) 
+		let playerAttack = rollDice(20);
 
-	// just doing one turn first
-	// player attacks once (update mewtwo's health) 
-	let dieValue = rollDice(20);
-	mewtwo.health -= dieValue;
+		mewtwo.health -= playerAttack;
 
-	// mewtwo attacks once (update player's pokemon's health)
-	let pokemonAttack = rollDice(20); 
-	pokemon.health -= pokemonAttack; 
-	console.log(myPokemon[x].name);
+		// mewtwo attacks once (update player's pokemon's health)
+		let mewtwoAttack = rollDice(20); 
+		myPokemon[currentPokemonIndex].health -= pokemonAttack;
+
+		// does my pkmn still have health? if not, move to next pkmn
+		// if the current pkmn is out of health, increment currentPokemonIndex
+		if (myPokemon[currentPokemonIndex](> 0)){
+			console.log("Continue playing")
+		}
+		if (myPokemon[currentPokemonIndex](< 0)) {
+			console.log("Next pokemon")
+		}
+		/////////////////////////////////////////////////////
+	}
+
+	// display results!
 }
 // Battle vs Mewtwo!
 // Player rolls 20 sided die to determine attack damage. 
