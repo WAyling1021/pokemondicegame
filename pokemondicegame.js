@@ -13,10 +13,6 @@ function rollDice(numberOfSides){
 	let dieValue = Math.floor(Math.random() * numberOfSides) + 1; 
 	console.log(dieValue); 
 
-	// if (dieValue === 3) {
-	// 	dieValue = dieValue * 3; 
-	// }
-
 	return dieValue; 
 }
 
@@ -30,42 +26,46 @@ function runGame() {	// master function
 
 	// actual gameplay starts
 	displayRules();
-	// call catch first pokemon function
+
 	let pokemon1 = catchFirstPokemon(); 
 	console.log(pokemon1);  
-	// capture the returned pokemon in a variable
-
-	// push the captured pokemon to the 'myPokemon' array
 	myPokemon.push(pokemon1);
 
 	let pokemon2 = catchSecondPokemon(); 
 	console.log(pokemon2);  
-	// capture the returned pokemon in a variable
-
-	// push the captured pokemon to the 'myPokemon' array
 	myPokemon.push(pokemon2);
 
 	let pokemon3 = catchThirdPokemon(); 
 	console.log(pokemon3);  
-	// capture the returned pokemon in a variable
-
-	// push the captured pokemon to the 'myPokemon' array
 	myPokemon.push(pokemon3);
 
 	let pokemon4 = catchFourthPokemon(); 
 	console.log(pokemon4);  
-	// capture the returned pokemon in a variable
-
-	// push the captured pokemon to the 'myPokemon' array
 	myPokemon.push(pokemon4);
 
 	let pokemon5 = catchFifthPokemon(); 
 	console.log(pokemon5);  
-	// capture the returned pokemon in a variable
-
-	// push the captured pokemon to the 'myPokemon' array
 	myPokemon.push(pokemon5);
+
+
+	// just doing one turn first
+	// player attacks once (update mewtwo's health) 
+	let dieValue = rollDice(20);
+	mewtwo.health -= dieValue;
+
+	// mewtwo attacks once (update player's pokemon's health)
+	let pokemonAttack = rollDice(20); 
+	pokemon.health -= pokemonAttack; 
+	console.log(myPokemon[x].name);
 }
+// Battle vs Mewtwo!
+// Player rolls 20 sided die to determine attack damage. 
+// 	+2 if attacking Pokemon has type advantage
+// 	-2 if attacking Pokemon has type disadvantage.
+// Mewtwo rolls 20 sided die to determine attack damage.
+// 	+2 if attacking Pokemon has type advantage
+// 	-2 if attacking Pokemon has type disadvantage.
+// Repeat! Battle until the player is out of Pokemon or Mewtwo has been defeated.
 
 function catchFirstPokemon() {
 	let dieValue = rollDice(3);
