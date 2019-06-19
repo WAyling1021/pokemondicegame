@@ -61,20 +61,23 @@ function runGame() {	// master function
 
 		// mewtwo attacks once (update player's pokemon's health)
 		let mewtwoAttack = rollDice(20); 
-		myPokemon[currentPokemonIndex].health -= pokemonAttack;
+		myPokemon[currentPokemonIndex].health -= mewtwoAttack;
 
 		// does my pkmn still have health? if not, move to next pkmn
-		// if the current pkmn is out of health, increment currentPokemonIndex
-		if (myPokemon[currentPokemonIndex](> 0)){
+		if (myPokemon[currentPokemonIndex].health> 0){
 			console.log("Continue playing")
 		}
-		if (myPokemon[currentPokemonIndex](< 0)) {
-			console.log("Next pokemon")
+		if (myPokemon[currentPokemonIndex].health<= 0) {
+			console.log("Next pokemon");
+			// if the current pkmn is out of health, increment currentPokemonIndex
+			currentPokemonIndex++;
 		}
 		/////////////////////////////////////////////////////
 	}
 
 	// display results!
+	display result()
+	console.log(result); 
 }
 // Battle vs Mewtwo!
 // Player rolls 20 sided die to determine attack damage. 
