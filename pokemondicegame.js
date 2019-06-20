@@ -76,8 +76,6 @@ function runGame() {	// master function
 	}
 
 	// display results!
-	display result()
-	console.log(result); 
 }
 // Battle vs Mewtwo!
 // Player rolls 20 sided die to determine attack damage. 
